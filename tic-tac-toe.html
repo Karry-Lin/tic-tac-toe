@@ -8,13 +8,19 @@
 				font-family: Calibri;
 				font-size: 48px;
             }
-			tr {
-				height: 100px;
-			}
-			td {
-				width: 100px;
-				text-align: center;
-			}
+		tr {
+			height: 100px;
+		}
+		td {
+			width: 100px;
+			text-align: center;
+		}
+		#restartButton {
+			margin-top: 20px;
+			padding: 10px 20px;
+			font-size: 16px;
+			cursor: pointer;
+		}
         </style>
         <script>
 		var count = 0; 
@@ -78,6 +84,9 @@
 			}			
 			
 		}
+		function restartGame() {
+			location.reload();
+		}
              
         </script>
     </head>
@@ -99,5 +108,6 @@
                 <td id='grid33' onclick="determine(id);"></td>
             </tr>
         </table>
+	  <button id="restartButton" onclick="restartGame();">restart</button>
     </body>
 </html>
