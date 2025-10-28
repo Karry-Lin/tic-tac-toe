@@ -21,10 +21,20 @@
 			font-size: 16px;
 			cursor: pointer;
 		}
+		#turnDisplay {
+                margin-bottom: 20px;
+                font-size: 24px;
+                font-weight: bold;
+                color: #333;
+            }
         </style>
         <script>
 		var count = 0; 
 		var player = 1;
+		var turnDisplay;
+		window.onload = function() {
+                turnDisplay = document.getElementById('turnDisplay');
+            };
 		function determine(id) {
 			var grids = [];
 			var isLine = false;
@@ -36,10 +46,12 @@
 				currentSelection.innerHTML = 'X'; 
 				player = 2; 
 				count++; 
+				turnDisplay.textContent = "輪到 O 了！";
 			} else if (player == 2) {
 				currentSelection.innerHTML = 'O'; 
 				player = 1; 
 				count++;
+				turnDisplay.textContent = "輪到 X 了！";
 			}
 			
 			for (var i = 1; i <= 3; i++) {
@@ -65,18 +77,21 @@
 			
 			if (isLine == true) {			
 				if (currentSelection.innerHTML == "O") {
+					turnDisplay.textContent = "O 贏了！";
 					setTimeout(() => { 
 						window.alert("O贏了！"); 
 						location.reload();
 					}, 300) ;					
 				}
 				else if (currentSelection.innerHTML == "X") {
+					turnDisplay.textContent = "X 贏了！";
 					setTimeout(() => { 
 						window.alert("X贏了！"); 
 						location.reload();
 					}, 300) ;		
 				}
 			} else if (count == 9) {
+				turnDisplay.textContent = "平手！";
 				setTimeout(() => { 
 					window.alert("平手"); 
 					location.reload();
@@ -87,10 +102,10 @@
 		function restartGame() {
 			location.reload();
 		}
-             
         </script>
     </head>
     <body>
+	  <h2 id="turnDisplay">輪到 X 了！</h2>
         <table id="table" border="1px" class="symbol">
             <tr>
                 <td id='grid11' onclick="determine(id);"></td>
